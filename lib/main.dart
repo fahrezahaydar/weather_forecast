@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'utils/notifications.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //await FcmHelper.initFcm();
+
+  await AwesomeNotificationsHelper.init();
   runApp(const MainApp());
 }
 
@@ -10,11 +16,18 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
           child: Center(
             child: FilledButton(
-              onPressed: () {},
+              onPressed: () async {
+                await AwesomeNotificationsHelper.showNotification(
+                  title: "Test",
+                  body: "Test",
+                  id: 99,
+                );
+              },
               child: Text('Hello Wsorlsd!'),
             ),
           ),
