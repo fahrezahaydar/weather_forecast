@@ -11,8 +11,13 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: FilledButton(onPressed: () {}, child: Text('Hello Wsorlsd!')),
+        body: SafeArea(
+          child: Center(
+            child: FilledButton(
+              onPressed: () {},
+              child: Text('Hello Wsorlsd!'),
+            ),
+          ),
         ),
       ),
     );
